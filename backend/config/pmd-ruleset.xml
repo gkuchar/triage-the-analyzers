@@ -13,7 +13,12 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>PMD quickstart, with Project Pulse's decisions.</description>
     <rule ref="rulesets/java/quickstart.xml">
-    <!-- D4, guard log statements: Turned off. All current instances do no expensive work (only method calls are getters) and 3/4 findings would not be turned oof in production (error, info)-->
+    <!-- D2 (UncommentedEmptyConstructor, UnnecessaryConstructor): turned off. The JPA Framework requires a no-arg constructor. Writing no-arg constructors explicitly keeps it there if someone later adds another
+         constructor; UnnecessaryConstructor's fix (delete it) would remove that protection, and
+         a comment on each one would repeat the same standard idiom 30 times. -->
+    <exclude name="UncommentedEmptyConstructor"/>
+    <exclude name="UnnecessaryConstructor"/>
+    <!-- D4, guard log statements: Turned off. All current instances do no expensive work (only method calls are getters) and 3/4 findings would not be turned off in production (error, info)-->
        <exclude name="GuardLogStatement"/>
     </rule>
 </ruleset>
