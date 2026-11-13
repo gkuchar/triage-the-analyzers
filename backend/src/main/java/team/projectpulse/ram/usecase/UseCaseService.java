@@ -202,14 +202,9 @@ public class UseCaseService {
         oldUseCase.setUseCaseTrigger(update.getUseCaseTrigger());
 
         // Update ManyToMany collections
-        oldUseCase.getSecondaryActors().clear();
-        oldUseCase.getSecondaryActors().addAll(update.getSecondaryActors());
-
-        oldUseCase.getPreconditions().clear();
-        oldUseCase.getPreconditions().addAll(update.getPreconditions());
-
-        oldUseCase.getPostconditions().clear();
-        oldUseCase.getPostconditions().addAll(update.getPostconditions());
+        updateCollection(oldUseCase.getSecondaryActors(), update.getSecondaryActors());
+        updateCollection(oldUseCase.getPreconditions(), update.getPreconditions());
+        updateCollection(oldUseCase.getPostconditions(), update.getPostconditions());
 
         // Update main steps
         oldUseCase.replaceMainSteps(update.getMainSteps());
