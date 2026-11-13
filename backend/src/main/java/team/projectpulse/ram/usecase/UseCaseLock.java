@@ -35,6 +35,10 @@ public class UseCaseLock {
     public UseCaseLock() {
     }
 
+    // PMD SimplifyBooleanReturns: kept as separate branches on purpose; each is one lock
+    // state (never locked, locked with no expiry, locked until expiresAt). Collapsing the
+    // last two into one || hides that a null expiry means the lock is held indefinitely.
+    @SuppressWarnings("PMD.SimplifyBooleanReturns")
     public boolean isLocked(Instant now) {
         if (lockedAt == null) {
             return false;
