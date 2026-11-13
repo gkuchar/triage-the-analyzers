@@ -4,6 +4,10 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class RequirementArtifactSpecs {
 
+    private RequirementArtifactSpecs() {
+        // static factory methods only; not meant to be instantiated
+    }
+
     public static Specification<RequirementArtifact> hasType(RequirementArtifactType type) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("type"), type);
     }
