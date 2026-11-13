@@ -7,4 +7,12 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+  <!-- D1 (EI_EXPOSE_REP, EI_EXPOSE_REP2): turned off. Of the 219 findings, ~158 are in
+      (mostly JPA entity) classes, where the suggested defensive copy would hand callers a
+      list Hibernate does not track, so changes are silently lost; 27 are Spring beans
+      storing injected dependencies, which are meant to be shared; the remaining 34 are
+      DTOs built once and serialized to JSON, never mutated afterward. -->
+  <Match>
+      <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+  </Match>
 </FindBugsFilter>
