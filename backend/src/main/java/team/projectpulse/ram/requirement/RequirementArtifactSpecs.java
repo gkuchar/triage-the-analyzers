@@ -2,7 +2,7 @@ package team.projectpulse.ram.requirement;
 
 import org.springframework.data.jpa.domain.Specification;
 
-public class RequirementArtifactSpecs {
+public final class RequirementArtifactSpecs {
 
     private RequirementArtifactSpecs() {
         // static factory methods only; not meant to be instantiated
